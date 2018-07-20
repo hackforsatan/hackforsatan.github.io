@@ -1,0 +1,235 @@
+/*****************
+ * Body Elements *
+ *****************/
+* {
+    box-sizing: border-box;
+}
+
+html *
+{
+    font-family: Courier New !important;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    padding: 15px;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 15px;
+}
+
+.column {
+    float: left;
+    padding: 15px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.menu {
+    max-width: 300px;
+    margin: auto;
+}
+
+.content {
+    width: 80%;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.menu li {
+    margin-bottom: 8px;
+}
+
+.content ul {
+    max-width: 600px;
+    
+    
+}
+
+.content li {
+    color: white;
+    text-align: justify;
+    margin-left: 0px;
+}
+
+body {
+    background-color: black;
+    color: white;
+    /*
+     margin: auto;
+     width: 50%;
+     */
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+p {
+    color: white;
+    text-align: justify;
+    max-width: 600px;
+}
+
+table {
+    width=100%;
+}
+
+caption {
+    caption-side: bottom;
+    text-align: left;
+    color: gray;
+    font-style: italic;
+}
+
+figure {
+    display: block;
+    margin: auto;
+}
+
+figcaption {
+    display: block;
+    caption-side: bottom;
+    /*text-align: center;*/
+    color: gray;
+    font-style: italic;
+}
+
+img {
+    display: block;
+    max-width: 600px;
+}
+
+img.resize{
+    max-width:600px;
+    
+}
+
+th, td {
+    padding-right: 35px;
+    text-align: left;
+    color: white;
+}
+
+.code {
+    font-family: Monospace, Serif;
+}
+
+tr {
+    color: white;
+}
+
+/*****************
+ * In-Line Links *
+ *****************/
+/* unvisited link */
+a.inp:link {
+    color: white;
+}
+
+/* visited link */
+a.inp:visited {
+    color: white;
+}
+
+/* mouse over link */
+a.inp:hover {
+    color: #ce0000;
+}
+
+/* selected link */
+a.inp:active {
+    color: #ce0000;
+}
+
+/****************
+ * Link Buttons *
+ ****************/
+a.butt:link, a:visited {
+    /*background-color: white;*/
+    color: white;
+    border: 1px solid white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a.butt:hover, a:active {
+    background-color: gray;
+}
+
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    max-width: 500px;
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+    color: black;
+}
+
+/*****************
+ * Main Menu Bar *
+ *****************/
+/*
+ ul.main {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ width: 200px;
+ background-color: black;
+ }
+ */
+.menu li a {
+    display: block;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    padding: 8px 16px;
+    
+    text-decoration: none;
+}
+
+.menu li a.active {
+    background-color: white;
+    color: black;
+}
+
+.menu li a:hover:not(.active) {
+    background-color: #ce0000;
+}
+
