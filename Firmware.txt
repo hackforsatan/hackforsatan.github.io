@@ -6,16 +6,20 @@ Our original feature set included:
 and progress in that narrative would increase your infectivity for that Plague. Solving 
 off-badge puzzles and entering keys would unlock branches in each narrative, similar to 
 the way Asylum worked last year.
+
 (2)	Plagues would be transmitted via BLE, one counter at a time, when you encountered a 
 badge with more counters in a Plague than yours. The pentagram would light up to let 
 you know other badges were in range, and you would push the button to complete the 
 transmission.
+
 (3)	5 counters in any Plague, plus the completion of that Plague's narrative, would kick off a 
 spinning animation for that Plague's LEDs. Completing all 4 Plagues would start a 
 breathing animation on the pentagram similar to the solved state of our previous two 
 badges.
+
 (4)	Our most ambitious feature was a pair of mobile apps that would act as a display for the 
 badge, and all future HFS badges.
+
 We ended up shipping a subset of these intended features. Why? Well, the first surprise 
 constraint was space. The narrative for ImpBadge fit inside 20kB, and I never imagined we'd 
 move beyond that by a full order of magnitude. The CC2640R2 contains 256kB of Flash 
@@ -27,6 +31,7 @@ dicked around with the decoder in C for much longer than I'd like to admit befor
 the limitations of heap allocation in TI-RTOS. Lesson learned: embedded malloc is always a lie. 
 Our inelegant solution was to include the first part of all 4 narratives on the badge and host the 
 rest in AWS.
+
 The second surprise constraint was my inability to get the CC2640R2 to act simultaneously as 
 both a BLE central and peripheral device. For months I'd been keeping up with two versions of 
 the project: one served a custom GATT profile that interacted nicely with our mobile apps, and 
@@ -37,6 +42,7 @@ testing. We eliminated major features at this point because we no longer had tim
 and debug (PWM, for instance, and timed button input). Our core features were Plague 
 propagation and story delivery, and we felt that if we could nail those we could justify releasing 
 the badge as planned.
+
 The hasty rewrite resulted in the bugs you saw at the con. The narrative strings were memory-
 adjacent, so the busted pointer that tracked story progress worked fine until the end of the last 
 story (that is, it appeared to work fine in limited testing). Badges were able to gain more than 
@@ -46,6 +52,7 @@ Badges were initially able to gain more than 5 counters in a Plague, which led t
 when badges encountered each other. Identified bugs were fixed and new firmware delivered 
 during the con, except for a particularly recalcitrant bug that replays the Plague update 
 animation over and over again (but does not appear to interfere with transmission).
+
 As for the apps: both versions are near complete, sans out-of-band authentication with a 
 badge. The badge is supposed to display an authentication code across its LEDs when put into 
 pairing mode.  The code would then be entered into the app to authenticate the session. The 
@@ -53,6 +60,7 @@ iOS version was submitted to App Store Beta Review the week before the con and a
 TestFlight distribution; we've yet to get that far with Android. Until the pre-con rewrite, the 
 apps were working with the peripheral-only version of the firmware. With limited time after 
 rewrite, I was forced to choose between apps or Plague. I chose Plague.
+
 I am proud of this badge. I think it is a worthy development board for Laird's SABLEX-R2 
 module. I think it is fucking gorgeous, and, having gone in with no prior knowledge of 
 embedded operating systems or BLE, I'm proud we shipped it. I think @hfs_abraxis's stories 
@@ -60,6 +68,7 @@ deserve the repulsion and discomfort of as many hackers as we can get them in fr
 But I am also aware that the feature set is not as deep as last year, the animations not as rich, 
 and the puzzles not as integrated. I'm also sorely disappointed that I left Las Vegas knowing 
 there were still firmware bugs I wasn't able to resolve in time.
+
 So, now I'm going to take the time I didn't have before to implement our original design, and 
 release a golden image of the PLAGUEBadge firmware, with instructions for building the dev 
 stack and flashing. I realize not everyone has access to the tools to do this themselves. Next 
